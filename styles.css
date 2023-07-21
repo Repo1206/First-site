@@ -3,12 +3,12 @@
 *::after {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: "Barlow Condensed", sans-serif;
-  font-family: "Montserrat", sans-serif;
+  box-sizing: inherit;
 }
 html {
   color-scheme: dark light;
+  font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 :root {
   --text: #050505;
@@ -27,19 +27,31 @@ html {
 .hero {
   height: 50vh;
   width: 95%;
+  top: 30px;
   font-family: "Barlow Condensed", sans-serif;
   position: relative;
   overflow: hidden;
   background: var(--background);
 }
 body {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 0;
   background: var(--background);
   color: var(--text);
+  min-height: 100vh;
 }
 
-nav ul {
+ul {
   flex: 1;
   text-align: right;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
 }
 nav ul li {
   display: inline-block;
@@ -47,50 +59,58 @@ nav ul li {
   margin: 10px 20px;
 }
 nav ul li a {
+  font-size: 20px;
+  font-weight: 500;
   text-decoration: none;
   color: var(--primary);
 }
 nav ul li a:hover {
   color: var(--accent);
 }
+ul img {
+  right: 0.5rem;
+}
 .logo {
   position: absolute;
   left: 10px;
   top: 10px;
-  width: 50px;
-  height: 50px;
+  bottom: 10px;
+  width: 60px;
+  height: 60px;
   cursor: pointer;
 }
 nav {
-  width: 100%;
-  margin: auto;
-  padding: 20px 0;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--background);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.4);
+  z-index: 10;
 }
-
+section {
+  padding-block: 2rem;
+}
+.divider {
+  background-image: linear-gradient(45deg, var(--accent), var(--primary));
+}
 .welcome {
-  margin-left: 8%;
-  margin-top: 5%;
+  margin: 10px 10%;
+  padding: 5% 0;
 }
 .welcome h1 {
-  font-size: 50px;
+  font-size: 45px;
   color: var(--text);
   font-family: "Montserrat", sans-serif;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
-
 .welcome p {
+  font-size: 20px;
   line-height: 22px;
   color: var(--text);
   font-family: "Barlow Condensed", sans-serif;
-}
-span {
-  color: var(--primary);
-}
-span:hover {
-  color: var(--accent);
 }
 .welcome a {
   background: var(--accent);
@@ -98,20 +118,26 @@ span:hover {
   text-decoration: none;
   color: var(--secondary);
   display: inline-block;
-  margin: 20px 0;
-  border-radius: 5px;
+  margin: 10px 0 20px;
+  border-radius: 10px;
 }
 .welcome a:hover {
   background: var(--secondary);
   color: var(--accent);
   transition: 0.5s;
 }
+span {
+  color: var(--primary);
+}
+span:hover {
+  color: var(--accent);
+}
 .img-box {
   width: 45%;
   height: 80%;
   position: absolute;
   bottom: 0;
-  right: 25px;
+  right: 20px;
 }
 .img-box img {
   height: 100%;
@@ -123,7 +149,7 @@ span:hover {
   border-radius: 100%;
 }
 .img-box .front-img {
-  bottom: 10px;
+  bottom: 5px;
   height: 80%;
   width: 20%;
   box-shadow: 20%;
@@ -137,6 +163,7 @@ span:hover {
 .img-box:hover .front-img {
   left: 65%;
 }
+
 .contact-links {
   display: flex;
   justify-content: center;
@@ -155,28 +182,10 @@ span:hover {
   text-decoration: none;
 }
 #icon {
+  top: 10px;
   width: 30px;
   cursor: pointer;
-}
-#projects {
-  margin: 20px 0;
-}
-.project-header {
-  margin: 20px 20px;
-}
-.project-grid {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: 1fr 1fr 1fr;
-}
-.project {
-  margin: 20px;
-}
-.project-img {
-  width: 20rem;
-  height: 12rem;
-  border: 5px;
-  border-radius: 5%;
+  margin: 0 20px 0 0;
 }
 
 .card {
@@ -187,6 +196,84 @@ span:hover {
 .card:hover {
   box-shadow: -5px -5px 10px var(--accent);
 }
+#projects {
+  margin: 20px 0 0 10px;
+}
+#projects a {
+  text-decoration: none;
+  text-align: center;
+  font-size: 1.5rem;
+}
+.description {
+  font-size: 1.5rem;
+  text-align: center;
+}
+.show {
+  display: flex;
+  align-items: center;
+}
+.project-header {
+  margin: 20px 20px;
+}
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 1rem;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  margin-bottom: 6rem;
+}
+.project-grid .btn {
+  grid-column-start: 2;
+}
+
+.project-title {
+  font-size: 2rem;
+}
+
+.project {
+  background: var(--secondary);
+  border-radius: 10%;
+  margin: 50px;
+  box-shadow: 0 5px 5px 5px var(--accent);
+  border-radius: 10%;
+  transition: box-shadow 0.3s ease;
+}
+.project:hover {
+  box-shadow: -5px -5px 10px var(--accent);
+}
+.project-img {
+  width: 20rem;
+  height: 12rem;
+  border: 5px;
+  border-radius: 5%;
+  object-fit: cover;
+}
+/* Projects section */
+
+.project-section {
+  text-align: center;
+  padding: 10rem 2rem 0;
+}
+
+.project-section-header {
+  max-width: 640px;
+  margin: 0 auto 6rem auto;
+  border-bottom: 0.2rem solid var(--accent);
+}
+
+@media (max-width: 28.75em) {
+  .project-section-header {
+    font-size: 4rem;
+  }
+}
+.btn {
+  display: inline-block;
+  /* padding: 1rem 2rem; */
+  border-radius: 2px;
+}
+
 .btn-show-all {
   background: var(--accent);
   padding: 10px 18px;
@@ -195,11 +282,95 @@ span:hover {
   display: inline-block;
   margin: 20px 25% 0 50%;
   border-radius: 5px;
+  font-size: 2rem;
+  box-shadow: 0 3px 3px 3px var(--accent);
+  /* transition: background 0.3s ease-out; */
 }
 .btn-show-all:hover {
   background: var(--secondary);
   color: var(--accent);
-  transition: 0.5s;
+  transition: 0.3s;
+  box-shadow: -3px -3px 7px var(--accent);
+}
+.btn-show-all:hover > i {
+  transform: translateX(2px);
+}
+
+.btn-show-all > i {
+  margin-left: 10px;
+  transform: translateX(0);
+  transition: transform 0.3s ease-out;
+}
+
+.about {
+  display: flex;
+  justify-content: space-between; /* Change 'right' to 'space-between' */
+  align-items: center; /* Add this line to center the items vertically */
+}
+.second img {
+  max-width: 320px;
+  float: left;
+  margin-left: 40px;
+}
+.first {
+  display: flex;
+  flex-direction: column; /* Add this line to stack the content vertically */
+  align-items: center; /* Add this line to center the items horizontally */
+  margin: 150px auto;
+  /* width: 70%; */
+  content: "";
+  clear: both;
+  display: table;
+}
+.first h3 {
+  top: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 1.3rem 0 2rem 20px;
+  font-size: 2rem;
+}
+.first-p {
+  display: flex;
+  /* margin-right: 50%; */
+  justify-content: flex-end;
+  padding: 20px 50px 0 20px;
+  font-size: 1.5rem;
+}
+
+.second h3 {
+  margin-top: 50px;
+  margin-left: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px 50px 0 20px;
+  font-size: 2rem;
+  font-weight: 600;
+}
+.second {
+  display: flex;
+  flex-direction: column; /* Add this line to stack the content vertically */
+  align-items: center; /* Add this line to center the items horizontally */
+  margin: 150px auto;
+  /* width: 70%; */
+  content: "";
+  clear: both;
+  display: table;
+}
+.lake-img {
+  max-width: 320px;
+  float: right;
+  margin-right: 70px;
+}
+
+.second-p {
+  display: flex;
+  margin-left: 40%;
+  justify-content: flex-end;
+  padding: 20px 50px 0 20px;
+  font-size: 1.5rem;
+  font-weight: 400;
 }
 @media (max-width: 1025px) {
   .welcome h1 {
